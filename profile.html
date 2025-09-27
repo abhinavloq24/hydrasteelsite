@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>My Profile - Hydrasteel</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      background-color: #0d0d0d;
+      color: #f0f0f0;
+      font-family: 'Segoe UI', sans-serif;
+      padding: 40px;
+      text-align: center;
+    }
+    nav a {
+      margin-right: 15px;
+      color: #00ffff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    h2 {
+      color: #00ffff;
+      margin-top: 40px;
+    }
+    .stats {
+      margin-top: 20px;
+      font-size: 1.1em;
+    }
+    .product-image {
+      margin-top: 30px;
+      width: 300px;
+      border-radius: 8px;
+      box-shadow: 0 0 15px #00ffff55;
+    }
+    canvas {
+      max-width: 600px;
+      margin: 40px auto;
+      background-color: #1a1a1a;
+      border-radius: 10px;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html">Shop</a>
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact Us</a>
+    <a href="profile.html">My Profile</a>
+  </nav>
+
+  <h2>My Profile</h2>
+  <div class="stats">
+    <p><strong>Selected Edition:</strong> ADVENTURE PRO</p>
+    <p><strong>Hydration Stats:</strong> 2.7L today | 12.4L this week</p>
+    <p><strong>Find My Hydra:</strong> GPS locator active</p>
+  </div>
+
+  <img src="prototype1.png" alt="Adventure PRO Bottle" class="product-image" />
+
+  <canvas id="hydrationGraph" width="600" height="300"></canvas>
+
+  <script>
+    const ctx = document.getElementById('hydrationGraph').getContext('2d');
+    const hydrationGraph = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+        datasets: [{
+          label: 'Water Intake (L)',
+          data: [2.5, 2.6, 2.7, 2.8, 2.9, 3.0, 2.7],
+          fill: true,
+          backgroundColor: 'rgba(0, 255, 255, 0.1)',
+          borderColor: '#00ffff',
+          pointBackgroundColor: '#00ffff',
+          tension: 0.4
+        }]
+      },
+      options: {
+        plugins: {
+          legend: {
+            labels: {
+              color: '#00ffff'
+            }
+          }
+        },
+        scales: {
+          x: {
+            ticks: { color: '#f0f0f0' },
+            grid: { color: '#333' }
+          },
+          y: {
+            beginAtZero: true,
+            max: 4,
+            ticks: { color: '#f0f0f0' },
+            grid: { color: '#333' }
+          }
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
